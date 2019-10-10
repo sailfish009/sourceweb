@@ -13,6 +13,8 @@ SUBDIRS += \
 # HACK: Stop qmake from attempting to strip the scripts.
 QMAKE_STRIP = /bin/echo
 
+QMAKE_CFLAGS_ISYSTEM = -I
+
 # Unix btrace.
 linux-*|freebsd-*|darwin-*|macx-* {
     SUBDIRS += btrace

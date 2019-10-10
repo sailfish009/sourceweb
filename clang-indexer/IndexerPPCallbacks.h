@@ -32,7 +32,8 @@ private:
                                     const clang::FileEntry *file,
                                     llvm::StringRef searchPath,
                                     llvm::StringRef relativePath,
-                                    const clang::Module *imported) override;
+                                    const clang::Module *imported);
+                                    // const clang::Module *imported) override;
 
     std::tuple<IndexerFileContext*, Location, Location>
     getIncludeFilenameLoc(clang::CharSourceRange filenameRange);
@@ -44,7 +45,8 @@ private:
     virtual void MacroDefined(const clang::Token &macroNameToken,
                               const clang::MacroDirective *md) override;
     virtual void MacroUndefined(const clang::Token &macroNameTok,
-                                const clang::MacroDefinition &md) override;
+                                const clang::MacroDefinition &md);
+                                // const clang::MacroDefinition &md) override;
     virtual void Defined(const clang::Token &macroNameToken,
                          const clang::MacroDefinition &md,
                          clang::SourceRange range) override;

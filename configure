@@ -1,7 +1,7 @@
 #!/bin/sh
 set -u
 
-CLANG_VER=4.0
+CLANG_VER=9.0
 SRCDIR=$(cd "$(dirname "$0")" && pwd)
 
 usage() {
@@ -95,7 +95,8 @@ if [ "$CLANG_DIR" = "" ]; then
         # ArchLinux has a different layout for clang
         TMP_CLANG_DIR=/usr
     elif [ "$(uname)" = "Linux" ]; then
-        TMP_CLANG_DIR=/usr/lib/llvm-$CLANG_VER
+        # TMP_CLANG_DIR=/usr/lib/llvm-$CLANG_VER
+        TMP_CLANG_DIR=/usr
     fi
 
     echo "Searching for Clang $CLANG_VER..."

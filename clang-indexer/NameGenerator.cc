@@ -291,6 +291,16 @@ void NameGenerator::VisitFunctionDecl(clang::FunctionDecl *decl)
         // C++ method type qualifiers.
         if (clang::CXXMethodDecl *method =
                 llvm::dyn_cast<clang::CXXMethodDecl>(decl)) {
+
+            clang::Qualifiers quals = method->getMethodQualifiers();
+            if(quals.hasConst())
+                m_out << " const";
+            if(quals.hasRestrict())
+                m_out << " restrict";
+            if(quals.hasVolatile())
+                m_out << " volatile";
+#if false
+            // old functions
             unsigned quals = method->getTypeQualifiers();
             if (quals & clang::Qualifiers::Const)
                 m_out << " const";
@@ -298,6 +308,7 @@ void NameGenerator::VisitFunctionDecl(clang::FunctionDecl *decl)
                 m_out << " restrict";
             if (quals & clang::Qualifiers::Volatile)
                 m_out << " volatile";
+#endif
         }
     }
     m_needSeparator = true;

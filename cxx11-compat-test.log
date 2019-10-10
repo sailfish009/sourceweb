@@ -1,0 +1,24 @@
++ mkdir cxx11-compat-test-build
++ cd cxx11-compat-test-build
++ /usr/bin/qmake /work/tmp/sourceweb/cxx11-compat-test/cxx11-compat-test.pro
++ make
+g++ -c -pipe -O2 -std=gnu++11 -Wall -W -D_REENTRANT -fPIC -DQT_NO_DEBUG -I../cxx11-compat-test -I. -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -o main.o ../cxx11-compat-test/main.cc
+../cxx11-compat-test/main.cc: In constructor ‘A::A(A&&)’:
+../cxx11-compat-test/main.cc:28:11: warning: unused parameter ‘other’ [-Wunused-parameter]
+   28 |     A(A &&other) {}
+      |       ~~~~^~~~~
+../cxx11-compat-test/main.cc: In member function ‘A& A::operator=(A&&)’:
+../cxx11-compat-test/main.cc:30:22: warning: unused parameter ‘other’ [-Wunused-parameter]
+   30 |     A &operator=(A &&other) { return *this; }
+      |                  ~~~~^~~~~
+../cxx11-compat-test/main.cc: In function ‘void func(A, A)’:
+../cxx11-compat-test/main.cc:42:7: warning: variable ‘tmp2’ set but not used [-Wunused-but-set-variable]
+   42 |     A tmp2 = std::move(other2);
+      |       ^~~~
+../cxx11-compat-test/main.cc: In function ‘int main()’:
+../cxx11-compat-test/main.cc:61:15: warning: unused variable ‘i’ [-Wunused-variable]
+   61 |     for (auto i : vi) {}
+      |               ^
+g++ -Wl,-O1 -o cxx11-compat-test main.o   -lpthread 
++ set +x
+/work/tmp/sourceweb/cxx11-compat-test/run-test.sh: SUCCESS
