@@ -12,9 +12,9 @@ SourceWeb currently runs on Linux and OS X.
 ### Dependencies
 
 SourceWeb is written in C++11.  The indexer links against Clang's C++ API.
-Clang's C++ APIs are not compatible between releases, so this version of
-SourceWeb requires exactly Clang 4.0.  The GUI uses Qt 4.6 or later.  Follow
-the build instructions to satisfy these dependencies.
+Ubuntu 19.10 or Ubuntu 18.04 with manual LLVM 9.0 build install (--prefix=/usr)
+
+https://solarianprogrammer.com/2013/01/17/building-clang-libcpp-ubuntu-linux/
 
 
 ### Building on Linux
@@ -23,8 +23,7 @@ Install prerequisite packages:
 
 Debian-based:
 
-    sudo apt-get install make g++ libqt4-dev zlib1g-dev libncurses5-dev \
-                         libclang-3.8-dev llvm-3.8-dev
+    sudo apt-get install make g++ libqt4-dev zlib1g-dev libncurses5-dev qt5-default qt5-qmake                      
 
 Fedora/CentOS:
 
